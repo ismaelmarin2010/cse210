@@ -13,6 +13,9 @@ public class Scripture
     // M E T H O D S
     public void HideRandomWords(int numberToHide)
     {
+        // 2. Improved the random logic to avoid duplicates and ensure progress.
+
+
         // Generate a "Random" list with numberToHide numbers.
         Random random = new Random();
         // List<int> indexOfRandoms = new List<int>();
