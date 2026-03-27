@@ -8,7 +8,8 @@ class Program
 {
     static Scripture Collection(int selection)
     {
-        // 1. Included a collection of scriptures to select which one to memorize from a menu.
+        // Have your program work with a library of scriptures rather than a single one. Choose scriptures at random to present to the user.        List<Scripture> collection = new List<Scripture>();
+
         List<Scripture> collection = new List<Scripture>();
 
         Reference refMoses1 = new Reference("Moses", 1, 39);
@@ -44,7 +45,6 @@ class Program
 
             if (running == "")
             {
-                // 2. Improved the random logic to avoid duplicates and improve the random logic.
                 scripture.HideRandomWords(5);
                 if (scripture.IsCompletelyHidden())
                 {
@@ -93,19 +93,24 @@ class Program
 
             if (option == "")
             {
+                // Have your program work with a library of scriptures rather than a single one. Choose scriptures at random to present to the user.
                 Random random = new Random();
                 int selection = random.Next(0, 4);
+
                 Scripture scripture = Collection(selection);
                 running = Memorize(scripture);
             }
+
             else if (option.ToLower() == "quit")
             {
                 break;
             }
+
             else
             {
                 Console.WriteLine("Not valid, try again!");
             }
+
         }
         Console.WriteLine("\nE N D   O F   P R O G R A M !!!\n\n");
     }
