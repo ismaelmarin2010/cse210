@@ -40,10 +40,10 @@ public class Word
             return _text;
         }
     }
-    
+
 
     // C O N S T R U C T O R S
-    
+
     public Word(string word)
     {
         _text = word;

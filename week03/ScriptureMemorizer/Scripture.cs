@@ -13,7 +13,7 @@ public class Scripture
     // M E T H O D S
     public void HideRandomWords(int numberToHide)
     {
-        // 2. Improved the random logic to avoid duplicates and ensure progress.
+        // 2. Improved the random logic to avoid duplicates and improve the random logic.
 
 
         // Generate a "Random" list with numberToHide numbers.
@@ -102,7 +102,7 @@ public class Scripture
         _reference = reference;
         _words = new List<Word>();
 
-        foreach(string word in scripture.Split(' '))
+        foreach (string word in scripture.Split(' '))
         {
             Word newWord = new Word(word);
             _words.Add(newWord);

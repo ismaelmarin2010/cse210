@@ -1,3 +1,6 @@
+// Showing Creativity and Exceeding Requirements:
+// Have your program work with a library of scriptures rather than a single one. Choose scriptures at random to present to the user.
+
 using System;
 using System.Runtime.CompilerServices;
 
@@ -5,6 +8,7 @@ class Program
 {
     static Scripture Collection(int selection)
     {
+        // 1. Included a collection of scriptures to select which one to memorize from a menu.
         List<Scripture> collection = new List<Scripture>();
 
         Reference refMoses1 = new Reference("Moses", 1, 39);
@@ -40,7 +44,8 @@ class Program
 
             if (enter == "")
             {
-                scripture.HideRandomWords(3);
+                // 2. Improved the random logic to avoid duplicates and improve the random logic.
+                scripture.HideRandomWords(5);
                 if (scripture.IsCompletelyHidden())
                 {
                     Console.WriteLine(scripture.GetDisplayText());
@@ -50,8 +55,6 @@ class Program
 
             else if (enter.ToLower() == "quit")
             {
-                Console.WriteLine("E N D   O F   P R O G R A M !!!");
-                running = false;
                 break;
             }
             else
@@ -63,21 +66,16 @@ class Program
         return running;
     }
 
-    static int Menu()
+    static string Menu()
     {
-        Console.WriteLine("1. Moses 1:39");
-        Console.WriteLine("2. Moses 7:18");
-        Console.WriteLine("3. Abraham 2:9–11");
-        Console.WriteLine("4. Abraham 3:22–23");
-        Console.WriteLine("0. Quit");
-        Console.Write("Select the Scripture you want to memorize: ");
-        int selection = int.Parse(Console.ReadLine());
-        if (selection == 0)
-        {
-            return 0;
-        }
-
-        selection = selection - 1;
+        Console.WriteLine("Available scriptures:");
+        Console.WriteLine("- Moses 1:39");
+        Console.WriteLine("- Moses 7:18");
+        Console.WriteLine("- Abraham 2:9–11");
+        Console.WriteLine("- Abraham 3:22–23");
+        Console.Write("\nPress 'Enter' to start memorizing one of these scriptures randomly!");
+        Console.WriteLine("(Otherwise, type '0' to quit.)");
+        string selection = Console.ReadLine();
         return selection;
     }
 
@@ -91,16 +89,24 @@ class Program
         {
             Console.WriteLine("\nDoctrinal Mastery Scripture");
             Console.WriteLine("---------------------------");
-            int option = Menu();
+            string option = Menu();
 
-            if (option == 0)
+            if (option == "")
             {
-                Console.WriteLine("E N D   O F   P R O G R A M !!!\n\n");
+                Random random = new Random();
+                int selection = random.Next(0, 4);
+                Scripture scripture = Collection(selection);
+                running = Memorize(scripture);
+            }
+            else if (option == "0")
+            {
+                Console.WriteLine("\nE N D   O F   P R O G R A M !!!\n\n");
                 break;
             }
-
-            Scripture scripture = Collection(option);
-            running = Memorize(scripture);
+            else
+            {
+                Console.WriteLine("Not valid, try again!");
+            }
         }
     }
 }
