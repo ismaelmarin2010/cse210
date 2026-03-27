@@ -34,26 +34,26 @@ class Program
         return collection[selection];
     }
 
-    static bool Memorize(Scripture scripture)
+    static string Memorize(Scripture scripture)
     {
-        bool running = true;
-        while (!scripture.IsCompletelyHidden() && running == true)
+        string running = "";
+        while (!scripture.IsCompletelyHidden() && running.ToLower() != "quit")
         {
             Console.WriteLine(scripture.GetDisplayText());
-            string enter = Console.ReadLine();
+            running = Console.ReadLine();
 
-            if (enter == "")
+            if (running == "")
             {
                 // 2. Improved the random logic to avoid duplicates and improve the random logic.
                 scripture.HideRandomWords(5);
                 if (scripture.IsCompletelyHidden())
                 {
                     Console.WriteLine(scripture.GetDisplayText());
-                    enter = Console.ReadLine();
+                    running = Console.ReadLine();
                 }
             }
 
-            else if (enter.ToLower() == "quit")
+            else if (running.ToLower() == "quit")
             {
                 break;
             }
@@ -73,8 +73,8 @@ class Program
         Console.WriteLine("- Moses 7:18");
         Console.WriteLine("- Abraham 2:9–11");
         Console.WriteLine("- Abraham 3:22–23");
-        Console.Write("\nPress 'Enter' to start memorizing one of these scriptures randomly!");
-        Console.WriteLine("(Otherwise, type '0' to quit.)");
+        Console.WriteLine("\nPress 'Enter' to start memorizing one of these scriptures randomly!");
+        Console.WriteLine("(Type 'quit' at any moment to finish)");
         string selection = Console.ReadLine();
         return selection;
     }
@@ -84,8 +84,8 @@ class Program
     {
         Console.WriteLine("\nHello World! This is the ScriptureMemorizer Project.");
 
-        bool running = true;
-        while (running)
+        string running = "";
+        while (running.ToLower() != "quit")
         {
             Console.WriteLine("\nDoctrinal Mastery Scripture");
             Console.WriteLine("---------------------------");
@@ -98,9 +98,8 @@ class Program
                 Scripture scripture = Collection(selection);
                 running = Memorize(scripture);
             }
-            else if (option == "0")
+            else if (option.ToLower() == "quit")
             {
-                Console.WriteLine("\nE N D   O F   P R O G R A M !!!\n\n");
                 break;
             }
             else
@@ -108,5 +107,6 @@ class Program
                 Console.WriteLine("Not valid, try again!");
             }
         }
+        Console.WriteLine("\nE N D   O F   P R O G R A M !!!\n\n");
     }
 }
