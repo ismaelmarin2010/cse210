@@ -22,12 +22,11 @@ class Program
         shapes.Add(new Rectangle("Blue", 2, 4));
         shapes.Add(new Circle("Yellow", 4));
 
-        Console.WriteLine("\nThis is the 'for' loop...\n");
+        Console.WriteLine("\n\nThis is the 'for' loop...\n");
         foreach (Shape shape in shapes)
         {
             Console.WriteLine($"The color of the shape is {shape.GetColor()}");
-            Console.WriteLine($"The area of the shape is {shape.GetArea()}");
-            Console.WriteLine("");
+            Console.WriteLine($"The area of the shape is {shape.GetArea()}\n");
         }
 
 
