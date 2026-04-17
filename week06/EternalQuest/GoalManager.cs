@@ -22,11 +22,11 @@ public class GoalManager
     private void CheckAchievements()
     {
         if (_score >= 1000)
-            Console.WriteLine("🏆 Champion Badge unlocked!");
+            Console.WriteLine("Champion Badge unlocked!");
         else if (_score >= 500)
-            Console.WriteLine("🥈 Dedicated Badge unlocked!");
+            Console.WriteLine("Dedicated Badge unlocked!");
         else if (_score >= 100)
-            Console.WriteLine("🥉 Starter Badge unlocked!");
+            Console.WriteLine("Starter Badge unlocked!");
     }
     public void Start()
     {
