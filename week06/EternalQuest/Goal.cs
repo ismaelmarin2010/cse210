@@ -6,6 +6,21 @@ public abstract class Goal
     private int _points;
 
     // GETTERS AND SETTERS
+    public string GetShortName()
+    {
+        return _shortName;
+    }
+
+    public string GetDescription()
+    {
+        return _description;
+    }
+
+    public int GetPoints()
+    {
+        return _points;
+    }
+
 
     // CONSTRUCTORS
     public Goal(string name, string description, int points)
@@ -20,9 +35,18 @@ public abstract class Goal
 
     public abstract bool IsComplete();
 
-    public abstract string GetDetailsString();
+    public virtual string GetDetailsString()
+    {
+        if (IsComplete())
+        {
+            return $"[X] {_shortName} ({_description})";
+        }
+        else
+        {
+            return $"[ ] {_shortName} ({_description})";
+        }
+    }
 
     public abstract string GetStringRepresentation();
-
 
 }
